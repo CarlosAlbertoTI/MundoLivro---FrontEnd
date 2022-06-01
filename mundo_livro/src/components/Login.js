@@ -9,6 +9,7 @@ export default function Login(){
       console.log(response)
     }
 
+    // inicializa e renderiza botão onde tiver id:signInDiv
     useEffect(() => {
         /* global google */
         google.accounts.id.initialize({
