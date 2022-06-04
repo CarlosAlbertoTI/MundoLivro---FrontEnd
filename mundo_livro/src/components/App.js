@@ -1,33 +1,18 @@
 import '../App.css';
-import { useEffect } from 'react'
-import Login from './Login';
 import { Container } from 'react-bootstrap';
+import React from 'react';
+import {auth} from './Firebase';
+import {useAuthState} from 'react-firebase-hooks/auth';
+import Login from './Login';
+import Mainpage from './Main';
 
 
 
 function App() {
-
+  const [user] = useAuthState(auth);
   return (
-    <Container className='d-flex align-items-center justify-content-center' style={{minHeight: "100vh", maxWidth:'800px'}}>
-        <Login />
-    </Container>
-  )
-
-  return (
-    <div className='App'>
-
-        Login()
-
-    </div>
-  )
+    user ? <Mainpage/> : <Login/>
+  );
 }
 
 export default App;
-
-/*
-<GoogleLogin
-            buttonText="Faça Log in com Email Institucional"
-            onSuccess={handleLogin}
-            onFailure={handleFailure}
-            cookiePolicy={'single_host_origin'}
-          /> */
