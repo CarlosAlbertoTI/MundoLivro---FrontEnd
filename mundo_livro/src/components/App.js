@@ -11,7 +11,7 @@ import Mainpage from './Main';
 function App() {
   const [user] = useAuthState(auth);
   return (
-    user ? <Mainpage/> : <Login/>
+    user? < Mainpage/> : <Login/>
   );
 }
 

@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
+
+body {
+    background: linear-gradient(#712B75 0%, #712B75 100%);
+    font-family: "work sans";
+}
+
+html {
+    font-size: 100%;
+}
+
+#containerLogin {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    max-width: 100%;
+}
+
+#logoLivro {
+    width: 350px;
+    height: 350px;
+}
+
+#logoText {
+    max-width: 80%;
+    text-align: justify;
+    color: #fff;
+}
+
+#logoInfo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 567px;
+}
+
+#loginform {
+    max-width: 567px;
+    min-width: 300px;
+    max-height: 700px;
+    width: 30%;
+    height: 60%;
+    margin: 100px auto;
+    background-color: #46244C;
+    border-radius: 40px;
+    /*padding-top: 5rem;
+    padding-bottom: 5rem;*/
+    margin: 0;
+}
+
+#header {
+    text-align: center;
+    font-family: 'open sans', sans-serif;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    margin: 0;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.textLogin {
+    text-align: center;
+    font-family: 'open sans', sans-serif;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    margin: 0;
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    width: 65%;
+
+}
+
+.row button {
+    border-radius: 25px;
+    width: 100%;
+    height: 54px;
+    font-size: 16px;
+    font-family: 'open sans';
+    font-style: normal;
+    color: #000;
+    font-weight: 400;
+    background: #fff;
+    border: 0px;
+    cursor: pointer;
+    transition: opacity 0.25s ease-out;
+}
+
+.row button:hover {
+    opacity: 0.8;
+}
+
+#button {
+    padding-bottom: 1rem;
+}
+
+#googleLogo {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+#iconGroup {
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width:800px) {
+    #loginform {
+        padding-top: 10px; 
+        padding-bottom: 10px;
+    }
+}
+
+@media only screen and (min-width:800px) {
+    #loginform {
+        padding-bottom: 80px;
+        padding-top: 80px;
+    }
+}
