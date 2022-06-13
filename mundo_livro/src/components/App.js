@@ -5,7 +5,7 @@ import {auth} from './Firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
 import Login from './Login';
 import Mainpage from './Main';
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 function App() {
