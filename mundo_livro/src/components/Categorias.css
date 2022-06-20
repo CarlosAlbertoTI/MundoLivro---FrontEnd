@@ -1,0 +1,26 @@
+.colunaCategorias {
+    margin: 1rem;
+}
+
+.colunaCategorias h3{
+    color: white;
+    text-decoration: underline;
+}
+
+.colunaCategorias p {
+    color: #FFE8E8;
+    margin: 0;
+}
+
+
+.colunaCategorias a {
+    color: #FFE8E8;
+    margin: 0;
+    text-decoration: none;
+}
+
+.colunaCategorias a:hover {
+    color: #FFE8E8;
+    text-decoration: underline;
+}
+

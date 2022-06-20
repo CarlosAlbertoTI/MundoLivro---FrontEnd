@@ -1,0 +1,24 @@
+
+
+.LivroAutor {
+    text-align: center;
+    color:#CDBCBC;
+}
+
+@media only screen and (max-width:800px) {
+    .LivroImagem img {
+        width: 108px;
+        height: 180px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .LivroMenu {
+        margin: 1rem;
+    }
+    .LivroTitulo {
+        color: white;
+        max-width: 200px;
+        text-align: center;
+    }
+}
