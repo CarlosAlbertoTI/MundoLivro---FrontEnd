@@ -1,6 +1,15 @@
-.MenuContent {
-    display: flex;
+.Content {
+    width: 80%;
+    align-items: center;
+    justify-items: center;
 }
+
+.EntregasContent {
+    display: flex;
+    justify-content: center;
+}
+
+
 
 .Livros {
     display: flex;

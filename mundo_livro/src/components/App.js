@@ -6,12 +6,22 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 import Login from './Login';
 import Mainpage from './Main';
 import Menu from './Menu';
+import Entregas from './Entregas';
+import MeusLivros from './MeusLivros';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 
 function App() {
   const [user] = useAuthState(auth);
+
+  return (
+    <MeusLivros />
+  )
+
+  return (
+    <Entregas />
+  )
 
   return (
     <Menu/>

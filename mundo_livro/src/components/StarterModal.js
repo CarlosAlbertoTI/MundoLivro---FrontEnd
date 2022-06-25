@@ -1,17 +1,21 @@
 import React from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useState } from "react";
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 const StarterModal = () => {
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [value, setValue] = useState()
+
     return (
         <>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Informação do Campus</Modal.Title>
+                    <Modal.Title>Informações</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
@@ -27,6 +31,13 @@ const StarterModal = () => {
                                 <option>Russas</option>
                                 <option>Itapaje</option>
                             </Form.Select>
+                        </Form.Group>
+                        <Form.Group>
+                            <PhoneInput
+                                placeholder="Enter phone number"
+                                value={value}
+                                onChange={setValue} 
+                                defaultCountry={"BR"} />
                         </Form.Group>
                     </Form>
                 </Modal.Body>
