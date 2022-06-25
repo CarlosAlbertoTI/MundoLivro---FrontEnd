@@ -7,12 +7,14 @@ import Categorias from './Categorias';
 import './Menu.css'
 import { FunnelFill } from 'react-bootstrap-icons';
 import CategoriaModal from './CategoriaModal';
+import StarterModal from './StarterModal';
 
 const Menu = () => {
 
     return (
         <div>
             <NavHeader />
+            <StarterModal />
             <CategoriaModal />
             <div className='MenuContent'>
                 <Categorias id='categorias'/>
