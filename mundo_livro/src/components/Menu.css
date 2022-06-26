@@ -15,6 +15,10 @@
     margin-top: 20px;
 }
 
+h3 {
+    color: white!important;
+}
+
 #filtro {
     position: fixed;
     bottom: 10px;
@@ -50,7 +54,7 @@ a:hover {
     }
     .LivroTitulo {
         color: white;
-        max-width: 166px;
+        width: 166px;
         text-align: center;
     }
 

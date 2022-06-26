@@ -5,8 +5,9 @@ import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 
 const StarterModal = (props) => {
-    const [phone, setPhone] = useState(false);
-    const [campus, setCampus] = useState("Pici");
+    const [phone, setPhone] = useState(0);
+    const [campus, setCampus] = useState("");
+
     return (
         <>
             <Modal show={props.show} onHide={props.handleClose}>
@@ -43,7 +44,11 @@ const StarterModal = (props) => {
                     <Button variant="secondary" onClick={props.handleClose}>
                         Fechar
                     </Button>
-                    <Button variant="primary" onClick={() => props.handleSave({campus, phone})}>
+                    <Button variant="primary" onClick={() =>{
+                            props.handleSave({campus, phone})
+                            setCampus("")
+                            setPhone(0)
+                         }}>
                         Salvar
                     </Button>
                 </Modal.Footer>

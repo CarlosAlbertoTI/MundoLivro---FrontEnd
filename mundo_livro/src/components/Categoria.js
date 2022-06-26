@@ -1,6 +1,12 @@
 import React from "react";
 
-export default props => 
-    <div>
-        <a href={props.href}><p>{props.titulo}</p></a>
-    </div>
+export default props => {
+    return (
+        <div>
+            <button className="categoria" onClick={()=>{
+                props.AddCategoria(props.titulo)}
+                }>{props.titulo}</button>
+            <br/>
+        </div>
+    )
+}

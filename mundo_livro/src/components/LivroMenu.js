@@ -10,9 +10,9 @@ export default props =>
             <div className='LivroTitulo'>
                 {props.titulo}
             </div>
-            <div className='LivroAutor'>
-                {props.autor}
-            </div>
         </a>
+        <div className='LivroAutor' onClick={() => props.handleBuyBook(props.id)}>
+            {props.autor}
+        </div>
     </div>
 

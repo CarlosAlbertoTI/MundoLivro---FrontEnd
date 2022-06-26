@@ -21,16 +21,22 @@ const Login = () => {
             phoneNumber:phone 
         } = auth.currentUser.toJSON()
         const id =auth.currentUser.uid
-
-        const result = await Axios.post('http://localhost:9000/login',{id,email,username,urlPhoto,phone})
+        let result
+        try{
+             result = await Axios.post('http://localhost:9000/login',{id,email,username,urlPhoto,phone})
+        }catch(e){
+            console.info(e)
+            return alert("WE HAD AN ERROR!")
+        }
         const  {message, data} = result.data
-        if(message != undefined){
-            if(data.campus == "" || data.phone  == 0){
+        if(message !== "Email is not valid!"){
+            localStorage.setItem('userId', data.id);
+            if(data.campus === "" && data.phone  === 0){
                 return navigate("Home",{ replace:true ,state:{hasCampusAndPhone: false,userId:data.id} });
             }
             return navigate("Home",{ replace:true ,state:{hasCampusAndPhone: true,userId:data.id} });
         }
-        alert("WE HAD AN ERROR!")
+        
     }
 
     const Header = props => (

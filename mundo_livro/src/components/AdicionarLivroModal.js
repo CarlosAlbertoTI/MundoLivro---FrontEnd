@@ -7,6 +7,9 @@ import './AdicionarLivroModal.css'
 import Select from 'react-select'
 
 const AdicionarLivroModal = props => {
+    const [optionSelect,setOptionSelect] = useState([])
+    const [nomeLivro,setNomeLivro] = useState("")
+    const [descricaoLivro,setDescricaoLivro] = useState("")
 
     const options = [
         { value: 'chocolate', label: 'Chocolate' },
@@ -22,17 +25,23 @@ const AdicionarLivroModal = props => {
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Nome do Livro</Form.Label>
-                            <Form.Control type="text" placeholder="Nome do Livro" />
+                            <Form.Control type="text" placeholder="Nome do Livro" onChange={(newValue)=>{
+                            setNomeLivro(newValue.target.value)
+                        }}/>
                         </Form.Group>
 
                         <Form.Group>
                         <Form.Label>Descrição</Form.Label>
-                        <Form.Control as="textarea" rows={3} />
+                        <Form.Control as="textarea" rows={3} onChange={(newValue)=>{
+                            setDescricaoLivro(newValue.target.value)
+                        }} />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Categoria do Livro</Form.Label>
-                            <Select isMulti={true} options={options} />
+                            <Select isMulti={true} options={options}  onChange={(newValue)=>{
+                                setOptionSelect(newValue)
+                            }}/>
                         </Form.Group>
 
                     </Form>
@@ -41,7 +50,9 @@ const AdicionarLivroModal = props => {
                     <Button variant="secondary" onClick={props.handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={props.handleClose}>
+                    <Button variant="primary" onClick={() => {
+                            props.handleSave({nomeLivro, descricaoLivro, optionSelect})
+                        }}>
                         Save Changes
                     </Button>
                 </Modal.Footer>

@@ -3,6 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 import { useState } from "react";
 import { FunnelFill } from 'react-bootstrap-icons';
 import Categorias from "./Categorias";
+import './CategoriaModal.css'
 
 const CategoriaModal = props => {
     const [show, setShow] = useState(false);
@@ -16,7 +17,7 @@ const CategoriaModal = props => {
             <Modal show={show} onHide={handleClose}>
                 <Modal.Body>
                     <p>Título</p>
-                    <Categorias />
+                    <Categorias id='categModal'/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>

@@ -7,20 +7,30 @@
     text-decoration: underline;
 }
 
-.colunaCategorias p {
+.colunaCategorias .categoria {
     color: #FFE8E8;
     margin: 0;
 }
 
 
-.colunaCategorias a {
+.colunaCategorias .categoria {
     color: #FFE8E8;
     margin: 0;
     text-decoration: none;
 }
 
-.colunaCategorias a:hover {
+.colunaCategorias .categoria:hover {
     color: #FFE8E8;
     text-decoration: underline;
 }
+
+.categoria {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    color:white;
+    cursor: pointer;
+    text-align: left;
+}
+
 
