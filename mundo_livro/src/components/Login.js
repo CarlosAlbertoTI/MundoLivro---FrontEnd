@@ -1,15 +1,36 @@
 import React from 'react';
 import './Login.css'
+import { useNavigate } from "react-router-dom";
 import { auth, provider } from './Firebase.js';
 import googleLogo from '../images/google-custom.svg'
 import mundoLivroLogo from '../images/livro_logo.png'
 import NavHeader from './Nav.js'
+import Axios from 'axios'
 
 const Login = () => {
+    let navigate = useNavigate();
 
     // Sign in with google
-    const signin = () => {
-        auth.signInWithPopup(provider).catch(alert);
+    const signin = async () =>{
+
+        await auth.signInWithPopup(provider).catch(alert);
+        const {
+            email,
+            displayName:username,
+            photoURL:urlPhoto,
+            phoneNumber:phone 
+        } = auth.currentUser.toJSON()
+        const id =auth.currentUser.uid
+
+        const result = await Axios.post('http://localhost:9000/login',{id,email,username,urlPhoto,phone})
+        const  {message, data} = result.data
+        if(message != undefined){
+            if(data.campus == "" || data.phone  == 0){
+                return navigate("Home",{ replace:true ,state:{hasCampusAndPhone: false,userId:data.id} });
+            }
+            return navigate("Home",{ replace:true ,state:{hasCampusAndPhone: true,userId:data.id} });
+        }
+        alert("WE HAD AN ERROR!")
     }
 
     const Header = props => (
@@ -18,7 +39,10 @@ const Login = () => {
 
     const GoogleButton = props => (
         <div id="button" className="row">
-            <button style={{}} onClick={signin}> <img src={googleLogo} id="googleLogo" /> {props.title}</button>
+            <button style={{}} onClick={()=> {
+                signin()
+
+                }}> <img src={googleLogo} id="googleLogo" /> {props.title}</button>
         </div>
     );
 

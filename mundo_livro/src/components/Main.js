@@ -13,7 +13,7 @@ const Mainpage = () => {
             {console.log(auth.currentUser)}
             Welcome
             {
-                auth.currentUser.email
+                auth.currentUser?.email ?? ""
             }
             <button style={{"marginLeft" : "20px"}} 
             onClick={logout}>

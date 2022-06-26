@@ -4,16 +4,12 @@ import { useState } from "react";
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 
-const StarterModal = () => {
-    const [show, setShow] = useState(true);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    const [value, setValue] = useState()
-
+const StarterModal = (props) => {
+    const [phone, setPhone] = useState(false);
+    const [campus, setCampus] = useState("Pici");
     return (
         <>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={props.show} onHide={props.handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Informações</Modal.Title>
                 </Modal.Header>
@@ -21,7 +17,9 @@ const StarterModal = () => {
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Escolha um Campus</Form.Label>
-                            <Form.Select>
+                            <Form.Select  onChange={(value) => {
+                                setCampus(value.target.value)
+                            }}>
                                 <option>Pici</option>
                                 <option>Benfica</option>
                                 <option>Porangabuçu</option>
@@ -35,17 +33,17 @@ const StarterModal = () => {
                         <Form.Group>
                             <PhoneInput
                                 placeholder="Enter phone number"
-                                value={value}
-                                onChange={setValue} 
+                                value={phone}
+                                onChange={setPhone} 
                                 defaultCountry={"BR"} />
                         </Form.Group>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={props.handleClose}>
                         Fechar
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={() => props.handleSave({campus, phone})}>
                         Salvar
                     </Button>
                 </Modal.Footer>
