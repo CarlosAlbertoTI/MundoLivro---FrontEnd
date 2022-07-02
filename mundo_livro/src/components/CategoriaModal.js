@@ -16,16 +16,10 @@ const CategoriaModal = props => {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Body>
-                    <p>Título</p>
                     <Categorias id='categModal'/>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-                    </Button>
+                    <div></div>
                 </Modal.Footer>
             </Modal>
         </div>

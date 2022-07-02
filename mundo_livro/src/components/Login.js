@@ -54,7 +54,7 @@ const Login = () => {
 
     return (
         <div>
-            <NavHeader />
+            <NavHeader login_page={true}/>
             <div id="containerLogin">
                 <div id="loginform">
                     <Header title="Faça Login ou Cadastre-se" />

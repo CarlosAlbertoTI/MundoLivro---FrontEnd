@@ -21,10 +21,12 @@ const NavHeader = props => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
+                            {props.login_page == undefined && (
+                            <>
                             {props.home_page ? 
-                                <Nav.Link active>
+                                <Nav.Link active to="/Home">
                                     <Link to="/Home">Home</Link>
-                                 </Nav.Link> 
+                                </Nav.Link> 
                                 : 
                                 <Nav.Link >
                                     <Link to="/Home">Home</Link>
@@ -52,6 +54,10 @@ const NavHeader = props => {
                                     <Link to="/MeusLivros">Meus Livros</Link>
                                 </Nav.Link>
                             }
+                            </>
+                            )
+                        }
+                        
                         </Nav>
 
 
