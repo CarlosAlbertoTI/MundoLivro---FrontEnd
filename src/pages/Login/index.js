@@ -15,7 +15,7 @@ const Login = () => {
     useEffect(() => {
         // Caso o usuário já esteja logado vá para /home
         const user = JSON.parse(localStorage.getItem('@MundoLivro:user'));
-        if (user.phone !== undefined && user.campus !== undefined) navigate("/home");
+        if (user?.phone !== undefined && user?.campus !== undefined) navigate("/home");
     }, [navigate])
 
     // Sign in with google
