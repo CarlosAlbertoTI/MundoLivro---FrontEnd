@@ -7,11 +7,12 @@ import api from '../../services/api'
 const Entregas = (props) => {
     // TODO: Fazer o blocked ser o id do usuário
     const [books, setBooks] = useState([]);
+    const {id} = JSON.parse(localStorage.getItem('@MundoLivro:user')) 
 
     // Pega os livros bloqueados
     useEffect(() => {
         api.get('/book').then(response => {
-            setBooks(response.data.filter(book => book.blocked));
+            setBooks(response.data.filter(book => book.blocked ==id));
         })
     }, [])
 

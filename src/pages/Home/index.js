@@ -11,14 +11,35 @@ import CATEGORIES from '../../consts/categories';
 const Home = () => {
     const [books, setBooks] = useState([]);
     const [searchFilter, setSearchFilter] = useState("");
+    const [updated, setShoudUpdate] = useState(false);
     const [categoryFilter, setCategoryFilter] = useState("")
+    const {id} = JSON.parse(localStorage.getItem('@MundoLivro:user')) 
 
-    // Pega todos os livros não bloqueados
+    
+    // Pega todos os livros não bloqueados e que nao sejam meus
     useEffect(() => {
         api.get('/book').then(response => {
-            setBooks(response.data.filter(book => !book.blocked));
+            setBooks(response.data.filter(book => {
+                console.info(book.userId," ",id)
+                if(!book.blocked & book.userId != id){
+                    return book
+                }
+            }));
         })
     }, [])
+
+    useEffect(() => {
+        api.get('/book').then(response => {
+            setBooks(response.data.filter(book => {
+                console.info(book.userId," ",id)
+                if(!book.blocked & book.userId != id){
+                    return book
+                }
+            }));
+        })
+    }, [updated])
+
+
 
     return (
         <div>
@@ -55,7 +76,7 @@ const Home = () => {
                             // Filtro por categoria
                             return categoryFilter === ""  || book.categories.includes(categoryFilter)
                         }).map(book => (
-                            <BookTile key={book.id} userId={book.userId} id={book.id} title={book.name} description={book.description} img={book.img} blocked={book.blocked} subtitle='Autor'/>
+                            <BookTile myBook={true} key={book.id} userId={book.userId} id={book.id} title={book.name} description={book.description} img={book.img} blocked={book.blocked} subtitle='Autor' handleUpdate={() => setShoudUpdate((oldValue) => !oldValue)}/>
                         ))}
                     </div>
                 </div>

@@ -6,6 +6,7 @@ import api from '../../services/api'
 
 const MeusLivros = (props) => {
     const [books, setBooks] = useState([]);
+    const [updated, setShoudUpdate] = useState(false);
 
     // Pega os livros do usuário logado
     useEffect(() => {
@@ -23,7 +24,7 @@ const MeusLivros = (props) => {
                 <div className='Content'>
                     <div className='Livros'>
                         {books.map(book => (
-                            <BookTile key={book.id} userId={book.userId} id={book.id} title={book.name} description={book.description} img={book.img} blocked={book.blocked} subtitle='Autor'/>
+                            <BookTile myBook={false} className='Livro' key={book.id} userId={book.userId} id={book.id} title={book.name} description={book.description} img={book.img} blocked={book.blocked} subtitle='Autor' handleUpdate={() => setShoudUpdate((oldValue) => !oldValue)}/>
                         ))}
                     </div>
                 </div>

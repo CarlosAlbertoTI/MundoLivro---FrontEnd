@@ -3,10 +3,11 @@ import './styles.css'
 import api from '../../services/api';
 import BookInfoModal from '../BookInfoModal';
 
-const BookTile = ({ userId, id, title, description, img, blocked, subtitle }) => {
+const BookTile = ({ userId, id, title, description, img, blocked, subtitle,handleUpdate, myBook = false }) => {
     // TODO: Fazer o autor de vdd
     const [user, setUser] = useState(null);
     const [showBookInfoModal, setShowBookInfoModal] = useState(false);
+    const {id:userIdOfWhoWantsTheBook} = JSON.parse(localStorage.getItem('@MundoLivro:user')) 
 
     // Faz o fetch do usuário a abre o modal
     const handleClickBook = async () => {
@@ -20,11 +21,11 @@ const BookTile = ({ userId, id, title, description, img, blocked, subtitle }) =>
     // Marca um livro como bloqueado
     const handleBuyBook = async () => {
         try {
-            const response = await api.put(`/user/${userId}/book/${id}`, { blocked: true });
+            const response = await api.put(`/user/${userId}/book/${id}`, { blocked: userIdOfWhoWantsTheBook });
 
             // Error
             if (response.message) throw new Error(response.message);
-
+            handleUpdate()
             setShowBookInfoModal(false);
         } catch (err) {
             console.error(err);
@@ -38,7 +39,7 @@ const BookTile = ({ userId, id, title, description, img, blocked, subtitle }) =>
 
             // Error
             if (response.message) throw new Error(response.message);
-
+            handleUpdate()
             setShowBookInfoModal(false);
         } catch (err) {
             console.error(err);
@@ -52,7 +53,7 @@ const BookTile = ({ userId, id, title, description, img, blocked, subtitle }) =>
 
             // Error
             if (response.message) throw new Error(response.message);
-
+            handleUpdate()
             setShowBookInfoModal(false);
         } catch (err) {
             console.error(err);
@@ -76,8 +77,8 @@ const BookTile = ({ userId, id, title, description, img, blocked, subtitle }) =>
                     </div>
                 )}
             </div>
-            {showBookInfoModal && (
-                <BookInfoModal blocked={blocked} show={showBookInfoModal} handleClose={() => setShowBookInfoModal(false)} handleBuy={handleBuyBook} handleCancel={handleCancelBook} handleConclude={handleConcludeBook}>
+            { showBookInfoModal && (
+                <BookInfoModal myBook={myBook} blocked={blocked} show={showBookInfoModal} handleClose={() => setShowBookInfoModal(false)} handleBuy={handleBuyBook} handleCancel={handleCancelBook} handleConclude={handleConcludeBook}>
                     <h2>Infomacões do livro</h2>
                     <p>Titulo: {title}</p>
                     <p>Descricão: {description}</p>

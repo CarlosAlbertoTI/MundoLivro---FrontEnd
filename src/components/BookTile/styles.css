@@ -13,10 +13,13 @@
     }
     .LivroMenu {
         margin: 1rem;
+
     }
     .LivroTitulo {
         color: white;
         max-width: 200px;
         text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }

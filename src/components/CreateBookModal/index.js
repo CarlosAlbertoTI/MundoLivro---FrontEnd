@@ -7,13 +7,13 @@ import api from "../../services/api";
 const AdicionarLivroModal = ({ show, handleClose }) => {
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
-    const [img, setImage] = useState("")
+    const [img, setImage] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_XTpjcWRmhxg62phqzs_6F76PCSSqkNUbAA&usqp=CAU')
     const [categories, setCategories] = useState([])
 
     // TODO: Fazer as páginas darem refresh
     const handleSave = async () => {
         const user = JSON.parse(localStorage.getItem('@MundoLivro:user'));
-
+        
         try {
             const response = await api.post(`/user/${user.id}/book`, { name, description, categories, img });
 
@@ -44,7 +44,9 @@ const AdicionarLivroModal = ({ show, handleClose }) => {
 
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Link da Imagem</Form.Label>
-                            <Form.Control type="text" placeholder="Link da Imagem" onChange={(event) => setImage(event.target.value)} />
+                            <Form.Control type="text" placeholder="Link da Imagem" onChange={(event) => {
+                                setImage(event.target.value)
+                            }} />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

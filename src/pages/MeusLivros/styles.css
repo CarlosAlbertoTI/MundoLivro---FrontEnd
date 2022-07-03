@@ -1,13 +1,25 @@
 .MenuContent {
     display: flex;
     height: 100%;
+    justify-content: center;
 }
 
 .Livros {
+    width:100%;
+    padding: 0 3vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.Livro{
+    flex-grow: 5;
+    width: 100%;
+    padding:0;
+    margin:0;    
 }
 
 .searchBar {
@@ -51,12 +63,16 @@ a:hover {
         margin-right: auto;
     }
     .LivroMenu {
-        margin: 2rem;
+        margin: 1rem;
     }
     .LivroTitulo {
+        margin-top:20px;
         color: white;
-        width: 166px;
+        max-height: 30px;
         text-align: center;
+        overflow: scroll;
+        text-overflow: ellipsis;
+        width: 166px;
     }
 
     #filtro {

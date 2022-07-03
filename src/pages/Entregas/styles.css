@@ -54,9 +54,13 @@ a:hover {
         margin: 2rem;
     }
     .LivroTitulo {
+        margin-top:20px;
         color: white;
-        width: 166px;
+        max-height: 30px;
         text-align: center;
+        overflow: scroll;
+        text-overflow: ellipsis;
+        width: 166px;
     }
 
     #filtro {
