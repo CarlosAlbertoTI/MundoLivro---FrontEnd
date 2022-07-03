@@ -44,20 +44,26 @@ const Home = () => {
     return (
         <div>
             <Header />
-            <PickCategoriesModal addCategoria={() => { }} />
+            <PickCategoriesModal addCategoria={(category) => {
+                                // Se a categoria já está selecionada, limpa ela, se seta normalmente
+                                setCategoryFilter(categoryFilter === category.toLowerCase() ? "" : category.toLowerCase())
+                            }} />
+
             <div className='MenuContent'>
                 <div id='categorias'>
                     <div className='colunaCategorias'>
                         <div className='categTitle'>Categorias</div>
                         {CATEGORIES.map(category => (
-                            <div key={category}><button onClick={() => {
+                            // <div key={category} >
+                                <button className='btnCategoria' onClick={() => {
                                 // Se a categoria já está selecionada, limpa ela, se seta normalmente
                                 setCategoryFilter(categoryFilter === category.toLowerCase() ? "" : category.toLowerCase())
-                            }}>{category}</button></div>
+                            }}>{category}</button>
+                            // </div>
                         ))}
                     </div>
                 </div>
-                <div>
+                <div className='bookContent'>
                     <Form className="d-flex searchBar">
                         <FormControl
                             type="search"

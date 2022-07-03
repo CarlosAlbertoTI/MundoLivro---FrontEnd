@@ -7,12 +7,23 @@ import api from '../../services/api'
 const Entregas = (props) => {
     // TODO: Fazer o blocked ser o id do usuário
     const [books, setBooks] = useState([]);
-    const {id} = JSON.parse(localStorage.getItem('@MundoLivro:user')) 
+    const {id} = JSON.parse(localStorage.getItem('@MundoLivro:user'))
+    const [updated, setShoudUpdate] = useState(false);
 
     // Pega os livros bloqueados
     useEffect(() => {
-        api.get('/book').then(response => {
-            setBooks(response.data.filter(book => book.blocked ==id));
+        const user = JSON.parse(localStorage.getItem('@MundoLivro:user'));
+
+        api.get(`/user/${user.id}/book`).then(response => {
+            setBooks(response.data.filter(book => book.blocked));
+        })
+    }, [updated])
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('@MundoLivro:user'));
+
+        api.get(`/user/${user.id}/book`).then(response => {
+            setBooks(response.data.filter(book => book.blocked));
         })
     }, [])
 
@@ -23,7 +34,7 @@ const Entregas = (props) => {
                 <div className='Content'>
                     <div className='Livros'>
                         {books.map(book => (
-                            <BookTile key={book.id} userId={book.userId} id={book.id} title={book.name} description={book.description} img={book.img} blocked={book.blocked} subtitle='Autor'/>
+                            <BookTile myBook={true} key={book.id} userId={book.userId} id={book.id} title={book.name} description={book.description} img={book.img} blocked={book.blocked} subtitle='Autor' handleUpdate={() => setShoudUpdate((oldValue) => !oldValue)}/>
                         ))}
                     </div>
                 </div>

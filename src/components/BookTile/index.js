@@ -7,7 +7,6 @@ const BookTile = ({ userId, id, title, description, img, blocked, subtitle,handl
     // TODO: Fazer o autor de vdd
     const [user, setUser] = useState(null);
     const [showBookInfoModal, setShowBookInfoModal] = useState(false);
-    const {id:userIdOfWhoWantsTheBook} = JSON.parse(localStorage.getItem('@MundoLivro:user')) 
 
     // Faz o fetch do usuário a abre o modal
     const handleClickBook = async () => {
@@ -21,7 +20,7 @@ const BookTile = ({ userId, id, title, description, img, blocked, subtitle,handl
     // Marca um livro como bloqueado
     const handleBuyBook = async () => {
         try {
-            const response = await api.put(`/user/${userId}/book/${id}`, { blocked: userIdOfWhoWantsTheBook });
+            const response = await api.put(`/user/${userId}/book/${id}`, { blocked: true });
 
             // Error
             if (response.message) throw new Error(response.message);

@@ -10,15 +10,25 @@ const PickCategoriesModal = props => {
     // TODO: Embelezar as categorias
     return (
         <div className="PickCategoriesModal">
-            <Button variant='light 'className="rounded-circle" id='filtro' onClick={() => setShow(true)}><FunnelFill id='iconFilter' /></Button>
+            <Button variant='light ' className="rounded-circle" id='filtro' onClick={() => setShow(true)}><FunnelFill id='iconFilter' /></Button>
 
             <Modal show={show} onHide={() => setShow(false)}>
+
                 <Modal.Body>
-                {
-                    CATEGORIES.map(category => (
-                        <p key={category}>{category}</p>
-                    ))
-                }
+                    <div className='ModalContent'>
+                        <div className='categoriaTitle'>
+                            <h3 id='title'>Categorias</h3>
+                        </div>
+                        <div className="categorias">
+                            {
+                                CATEGORIES.map(category => (
+                                    <button className='btnCategoria' onClick={() => {
+                                        props.addCategoria(category)
+                                    }} key={category}>{category}</button>
+                                ))
+                            }
+                        </div>
+                    </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <div></div>

@@ -1,7 +1,9 @@
 .categTitle {
-    color: black !important;
+    color:#FFE8E8;
+    border-bottom:1px solid #FFE8E8;
 }
 
 #categModal .categoria {
-    color: black !important;
+    color:#FFE8E8;
+    border-bottom:1px solid #FFE8E8;
 }

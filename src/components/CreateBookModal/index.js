@@ -6,6 +6,7 @@ import api from "../../services/api";
 
 const AdicionarLivroModal = ({ show, handleClose }) => {
     const [name, setName] = useState("")
+    const [author, setAuthor] = useState("")
     const [description, setDescription] = useState("")
     const [img, setImage] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_XTpjcWRmhxg62phqzs_6F76PCSSqkNUbAA&usqp=CAU')
     const [categories, setCategories] = useState([])
@@ -15,7 +16,7 @@ const AdicionarLivroModal = ({ show, handleClose }) => {
         const user = JSON.parse(localStorage.getItem('@MundoLivro:user'));
         
         try {
-            const response = await api.post(`/user/${user.id}/book`, { name, description, categories, img });
+            const response = await api.post(`/user/${user.id}/book`, { name, author, description, categories, img });
 
             // Error
             if (response.message) throw new Error(response.message);
@@ -35,6 +36,11 @@ const AdicionarLivroModal = ({ show, handleClose }) => {
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Nome do Livro</Form.Label>
                             <Form.Control type="text" placeholder="Nome do Livro" onChange={(event) => setName(event.target.value)} />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Label>Autor</Form.Label>
+                            <Form.Control type="text" placeholder="Autor" onChange={(event) => setAuthor(event.target.value)} />
                         </Form.Group>
 
                         <Form.Group>

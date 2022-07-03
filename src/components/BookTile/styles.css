@@ -16,10 +16,12 @@
 
     }
     .LivroTitulo {
+        margin-top:20px;
         color: white;
-        max-width: 200px;
+        max-height: 30px;
         text-align: center;
-        overflow: hidden;
+        overflow: scroll;
         text-overflow: ellipsis;
+        max-width: 200px;
     }
 }

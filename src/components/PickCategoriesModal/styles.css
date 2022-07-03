@@ -1,7 +1,46 @@
-.categTitle {
-    color: black !important;
+.btnCategoria{
+    color:black;
+    width:100%;
+    display: block;
+    text-align: start;
+    margin:5px;
+    background-color: white;
+    border:0;
 }
 
-#categModal .categoria {
-    color: black !important;
+.btnCategoria:hover{
+    margin:8px;
+    color:#ded6d6;
+
+}
+
+.btnCategoriaActivate{
+    color:lightgrey;
+}
+
+.ModalContent{
+    width:90%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.categoriaTitle{
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#title{
+    color: black!important;
+} 
+
+.categorias{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

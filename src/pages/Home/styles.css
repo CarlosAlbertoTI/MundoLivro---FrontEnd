@@ -1,6 +1,39 @@
 .MenuContent {
     display: flex;
+    flex-direction: row;
     height: 100%;
+    padding: 20px;
+}
+
+#categorias{
+    padding:5px;
+    
+}
+
+.bookContent{
+    width: 100%;
+    display: block;
+}
+
+
+.categTitle{
+    color:#FFE8E8;
+    border-bottom:1px solid #FFE8E8;
+}
+.btnCategoria{
+    color:#FFE8E8;
+    width:100%;
+    display: block;
+    text-align: left;
+    margin:5px;
+    background-color: #712B75;
+    border:0;
+}
+
+.btnCategoria:hover{
+    margin:8px;
+    color:#ded6d6;
+
 }
 
 .Livros {
