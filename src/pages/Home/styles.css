@@ -1,15 +1,7 @@
-.Content {
-    width: 80%;
-    align-items: center;
-    justify-items: center;
-}
-
-.EntregasContent {
+.MenuContent {
     display: flex;
-    justify-content: center;
+    height: 100%;
 }
-
-
 
 .Livros {
     display: flex;
@@ -22,6 +14,10 @@
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 20px;
+}
+
+h3 {
+    color: white!important;
 }
 
 #filtro {
@@ -59,7 +55,7 @@ a:hover {
     }
     .LivroTitulo {
         color: white;
-        max-width: 166px;
+        width: 166px;
         text-align: center;
     }
 
