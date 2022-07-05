@@ -7,7 +7,7 @@ import api from '../../services/api'
 const Entregas = (props) => {
     // TODO: Fazer o blocked ser o id do usuário
     const [books, setBooks] = useState([]);
-    const {id} = JSON.parse(localStorage.getItem('@MundoLivro:user'))
+    const { id } = JSON.parse(localStorage.getItem('@MundoLivro:user'))
     const [updated, setShoudUpdate] = useState(false);
 
     // Pega os livros bloqueados
@@ -33,9 +33,19 @@ const Entregas = (props) => {
             <div className='EntregasContent'>
                 <div className='Content'>
                     <div className='Livros'>
-                        {books.map(book => (
-                            <BookTile myBook={true} key={book.id} userId={book.userId} id={book.id} title={book.name} description={book.description} img={book.img} blocked={book.blocked} subtitle='Autor' handleUpdate={() => setShoudUpdate((oldValue) => !oldValue)}/>
-                        ))}
+
+                        {books.length == 0 && (
+                            <div style={{ width: '90%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <p>Opa! Parece que ninguem esta interessado nos seus livros no momento!</p>
+                            </div>
+                        )}
+                        {books.length > 0 && (
+                            <>
+                                {books.map(book => (
+                                    <BookTile myBook={true} key={book.id} userId={book.userId} id={book.id} title={book.name} description={book.description} img={book.img} blocked={book.blocked} subtitle='Autor' handleUpdate={() => setShoudUpdate((oldValue) => !oldValue)} />
+                                ))}
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

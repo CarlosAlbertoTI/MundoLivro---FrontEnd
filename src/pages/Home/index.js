@@ -13,15 +13,15 @@ const Home = () => {
     const [searchFilter, setSearchFilter] = useState("");
     const [updated, setShoudUpdate] = useState(false);
     const [categoryFilter, setCategoryFilter] = useState("")
-    const {id} = JSON.parse(localStorage.getItem('@MundoLivro:user')) 
+    const { id } = JSON.parse(localStorage.getItem('@MundoLivro:user'))
 
-    
+
     // Pega todos os livros não bloqueados e que nao sejam meus
     useEffect(() => {
         api.get('/book').then(response => {
             setBooks(response.data.filter(book => {
-                console.info(book.userId," ",id)
-                if(!book.blocked & book.userId != id){
+                console.info(book.userId, " ", id)
+                if (!book.blocked & book.userId != id) {
                     return book
                 }
             }));
@@ -31,8 +31,8 @@ const Home = () => {
     useEffect(() => {
         api.get('/book').then(response => {
             setBooks(response.data.filter(book => {
-                console.info(book.userId," ",id)
-                if(!book.blocked & book.userId != id){
+                console.info(book.userId, " ", id)
+                if (!book.blocked & book.userId != id) {
                     return book
                 }
             }));
@@ -45,9 +45,9 @@ const Home = () => {
         <div>
             <Header />
             <PickCategoriesModal addCategoria={(category) => {
-                                // Se a categoria já está selecionada, limpa ela, se seta normalmente
-                                setCategoryFilter(categoryFilter === category.toLowerCase() ? "" : category.toLowerCase())
-                            }} />
+                // Se a categoria já está selecionada, limpa ela, se seta normalmente
+                setCategoryFilter(categoryFilter === category.toLowerCase() ? "" : category.toLowerCase())
+            }} />
 
             <div className='MenuContent'>
                 <div id='categorias'>
@@ -55,7 +55,7 @@ const Home = () => {
                         <div className='categTitle'>Categorias</div>
                         {CATEGORIES.map(category => (
                             // <div key={category} >
-                                <button className='btnCategoria' onClick={() => {
+                            <button className='btnCategoria' onClick={() => {
                                 // Se a categoria já está selecionada, limpa ela, se seta normalmente
                                 setCategoryFilter(categoryFilter === category.toLowerCase() ? "" : category.toLowerCase())
                             }}>{category}</button>
@@ -75,15 +75,30 @@ const Home = () => {
                         <Button variant="warning">Search</Button>
                     </Form>
                     <div className='Livros'>
-                        {books?.filter(book => {
-                            // Filtro por nome
-                            return searchFilter === "" || book.name.search(new RegExp(searchFilter, "i")) !== -1
-                        }).filter(book => {
-                            // Filtro por categoria
-                            return categoryFilter === ""  || book.categories.includes(categoryFilter)
-                        }).map(book => (
-                            <BookTile myBook={true} key={book.id} userId={book.userId} id={book.id} title={book.name} description={book.description} img={book.img} blocked={book.blocked} subtitle='Autor' handleUpdate={() => setShoudUpdate((oldValue) => !oldValue)}/>
-                        ))}
+                        {
+                            <>
+                                {books.length > 0 && (
+                                    <>
+
+                                        {books.filter(book => {
+                                            // Filtro por nome
+                                            return searchFilter === "" || book.name.search(new RegExp(searchFilter, "i")) !== -1
+                                        }).filter(book => {
+                                            // Filtro por categoria
+                                            return categoryFilter === "" || book.categories.includes(categoryFilter)
+                                        }).map(book => (
+                                            <BookTile myBook={true} key={book.id} userId={book.userId} id={book.id} title={book.name} description={book.description} img={book.img} blocked={book.blocked} subtitle='Autor' handleUpdate={() => setShoudUpdate((oldValue) => !oldValue)} />
+                                        ))}
+                                    </>
+
+                                )}
+                                {books.length == 0 && (
+                                    <div style={{ width: '90%', height: '100vh', display: 'flex', justifyContent: 'center' }}>
+                                        <p>Que pena! Não a nenhum livro disponivel no momento!</p>
+                                    </div>
+                                )}
+                            </>
+                        }
                     </div>
                 </div>
             </div>

@@ -10,6 +10,7 @@ html {
 }
 
 #containerLogin {
+    height: 100vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap-reverse;
@@ -49,6 +50,9 @@ html {
     /*padding-top: 5rem;
     padding-bottom: 5rem;*/
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #header {

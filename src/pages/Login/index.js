@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { auth, provider } from '../../services/Firebase';
 import googleLogo from '../../images/google-custom.svg'
-import mundoLivroLogo from '../../images/livro_logo.png'
+import mundoLivroLogo from '../../images/livro_mundo_livro.png'
 import Header from '../../components/Header'
 import api from '../../services/api'
 import UpdateUserModal from '../../components/UpdateUserModal';
@@ -78,7 +78,7 @@ const Login = () => {
                 </div>
                 <div id="logoInfo">
                     <img src={mundoLivroLogo} id="logoLivro" alt={"Logo Mundo Livro"} />
-                    <p id="logoText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                    <p id="logoText">Este é um projeto dos alunos do Curso de Computação, desenvolvido para a cadeira de engenharia de software, O mundoLivro é um projeto que visa facilitar o acesso a livros dentro da comunidade academica da UFC.</p>
                 </div>
             </div>
         </div>

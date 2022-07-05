@@ -32,9 +32,18 @@ const MeusLivros = (props) => {
             <div className='EntregasContent'>
                 <div className='Content'>
                     <div className='Livros'>
-                        {books.map(book => (
-                            <BookTile myBook={false} className='Livro' key={book.id} userId={book.userId} id={book.id} title={book.name} description={book.description} img={book.img} blocked={book.blocked} subtitle={book.author} handleUpdate={() => setShoudUpdate((oldValue) => !oldValue)}/>
-                        ))}
+                        {books.length == 0 && (
+                            <div style={{ width: '90%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <p>Opa! Parece que vocé não tem nenhum livro cadastrado! Clique no botão acima para cadastrar!</p>
+                            </div>
+                        )}
+                        {books.length > 0 && (
+                            <>
+                                {books.map(book => (
+                                    <BookTile myBook={false} className='Livro' key={book.id} userId={book.userId} id={book.id} title={book.name} description={book.description} img={book.img} blocked={book.blocked} subtitle={book.author} handleUpdate={() => setShoudUpdate((oldValue) => !oldValue)} />
+                                ))}
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
