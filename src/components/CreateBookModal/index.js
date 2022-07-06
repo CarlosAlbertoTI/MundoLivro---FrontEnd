@@ -14,7 +14,7 @@ const AdicionarLivroModal = ({ show, handleClose }) => {
     // TODO: Fazer as páginas darem refresh
     const handleSave = async () => {
         const user = JSON.parse(localStorage.getItem('@MundoLivro:user'));
-        
+
         try {
             const response = await api.post(`/user/${user.id}/book`, { name, author, description, categories, img });
 
@@ -63,11 +63,11 @@ const AdicionarLivroModal = ({ show, handleClose }) => {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
+                    <Button style={{ backgroundColor: 'grey' }} onClick={handleClose}>
+                        Fechar
                     </Button>
-                    <Button variant="primary" onClick={handleSave}>
-                        Save Changes
+                    <Button style={{ backgroundColor: 'green' }} onClick={handleSave}>
+                        Salvar Livro
                     </Button>
                 </Modal.Footer>
             </Modal>

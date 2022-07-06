@@ -1,6 +1,12 @@
 .LivroAutor {
     text-align: center;
     color:#CDBCBC;
+    overflow: hidden;
+}
+
+
+.LivroTitulo{
+    overflow: hidden;
 }
 
 @media only screen and (max-width:800px) {
@@ -20,7 +26,7 @@
         color: white;
         max-height: 30px;
         text-align: center;
-        overflow: scroll;
+        overflow: hidden;
         text-overflow: ellipsis;
         max-width: 200px;
     }

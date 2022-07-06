@@ -35,8 +35,17 @@ const Entregas = (props) => {
                     <div className='Livros'>
 
                         {books.length == 0 && (
-                            <div style={{ width: '90%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                <p>Opa! Parece que ninguem esta interessado nos seus livros no momento!</p>
+                            <div style={{ width: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <div style={{
+                                    minWidth: '200px', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '100px',
+                                    backgroundColor: 'white',
+                                    color: 'black',
+                                    borderRadius: '5px',
+                                    textAlign: 'center',
+                                    padding: '10px 40px',
+                                }}>
+                                    <p>Opa! Parece que ninguem esta interessado nos seus livros no momento!</p>
+                                </div>
                             </div>
                         )}
                         {books.length > 0 && (

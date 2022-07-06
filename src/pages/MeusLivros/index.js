@@ -13,7 +13,7 @@ const MeusLivros = (props) => {
         const user = JSON.parse(localStorage.getItem('@MundoLivro:user'));
 
         api.get(`/user/${user.id}/book`).then(response => {
-            setBooks(response.data.filter(book => !book.blocked));
+            setBooks(response.data);
         })
     }, [])
 
@@ -21,7 +21,7 @@ const MeusLivros = (props) => {
         const user = JSON.parse(localStorage.getItem('@MundoLivro:user'));
 
         api.get(`/user/${user.id}/book`).then(response => {
-            setBooks(response.data.filter(book => !book.blocked));
+            setBooks(response.data);
         })
     }, [updated])
 
@@ -33,8 +33,17 @@ const MeusLivros = (props) => {
                 <div className='Content'>
                     <div className='Livros'>
                         {books.length == 0 && (
-                            <div style={{ width: '90%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                <p>Opa! Parece que vocé não tem nenhum livro cadastrado! Clique no botão acima para cadastrar!</p>
+                            <div style={{ width: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <div style={{
+                                    minWidth: '200px', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '100px',
+                                    backgroundColor: 'white',
+                                    color: 'black',
+                                    borderRadius: '5px',
+                                    textAlign: 'center',
+                                    padding: '10px 40px',
+                                }}>
+                                    <p>Opa! Parece que vocé não tem nenhum livro cadastrado! Clique no botão acima para cadastrar!</p>
+                                </div>
                             </div>
                         )}
                         {books.length > 0 && (

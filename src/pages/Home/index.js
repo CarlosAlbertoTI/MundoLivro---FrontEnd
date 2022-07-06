@@ -13,12 +13,12 @@ const Home = () => {
     const [searchFilter, setSearchFilter] = useState("");
     const [updated, setShoudUpdate] = useState(false);
     const [categoryFilter, setCategoryFilter] = useState("")
-    const { id } = JSON.parse(localStorage.getItem('@MundoLivro:user'))
+    const { id, campus } = JSON.parse(localStorage.getItem('@MundoLivro:user'))
 
 
     // Pega todos os livros não bloqueados e que nao sejam meus
     useEffect(() => {
-        api.get('/book').then(response => {
+        api.get('/book', { params: { campus } }).then(response => {
             setBooks(response.data.filter(book => {
                 console.info(book.userId, " ", id)
                 if (!book.blocked & book.userId != id) {
@@ -29,7 +29,7 @@ const Home = () => {
     }, [])
 
     useEffect(() => {
-        api.get('/book').then(response => {
+        api.get('/book', { params: { campus } }).then(response => {
             setBooks(response.data.filter(book => {
                 console.info(book.userId, " ", id)
                 if (!book.blocked & book.userId != id) {
@@ -74,31 +74,43 @@ const Home = () => {
                         />
                         <Button variant="warning">Search</Button>
                     </Form>
-                    <div className='Livros'>
-                        {
-                            <>
-                                {books.length > 0 && (
-                                    <>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
 
-                                        {books.filter(book => {
-                                            // Filtro por nome
-                                            return searchFilter === "" || book.name.search(new RegExp(searchFilter, "i")) !== -1
-                                        }).filter(book => {
-                                            // Filtro por categoria
-                                            return categoryFilter === "" || book.categories.includes(categoryFilter)
-                                        }).map(book => (
-                                            <BookTile myBook={true} key={book.id} userId={book.userId} id={book.id} title={book.name} description={book.description} img={book.img} blocked={book.blocked} subtitle='Autor' handleUpdate={() => setShoudUpdate((oldValue) => !oldValue)} />
-                                        ))}
-                                    </>
+                        <div className='Livros'>
+                            {
+                                <>
+                                    {books.length > 0 && (
+                                        <>
 
-                                )}
-                                {books.length == 0 && (
-                                    <div style={{ width: '90%', height: '100vh', display: 'flex', justifyContent: 'center' }}>
-                                        <p>Que pena! Não a nenhum livro disponivel no momento!</p>
-                                    </div>
-                                )}
-                            </>
-                        }
+                                            {books.filter(book => {
+                                                // Filtro por nome
+                                                return searchFilter === "" || book.name.search(new RegExp(searchFilter, "i")) !== -1
+                                            }).filter(book => {
+                                                // Filtro por categoria
+                                                return categoryFilter === "" || book.categories.includes(categoryFilter)
+                                            }).map(book => (
+                                                <BookTile myBook={true} key={book.id} userId={book.userId} id={book.id} title={book.name} description={book.description} img={book.img} blocked={book.blocked} subtitle='Autor' handleUpdate={() => setShoudUpdate((oldValue) => !oldValue)} />
+                                            ))}
+                                        </>
+
+                                    )}
+                                    {books.length == 0 && (
+                                        <div style={{ width: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                            <div style={{
+                                                minWidth: '200px', height: '100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '100px',
+                                                backgroundColor: 'white',
+                                                color: 'black',
+                                                borderRadius: '5px',
+                                                textAlign: 'center',
+                                                padding: '10px 40px',
+                                            }}>
+                                                <p>Que pena! Não há nenhum livro disponivel no momento!</p>
+                                            </div>
+                                        </div>
+                                    )}
+                                </>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

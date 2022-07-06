@@ -3,7 +3,7 @@ import './styles.css'
 import api from '../../services/api';
 import BookInfoModal from '../BookInfoModal';
 
-const BookTile = ({ userId, id, title, description, img, blocked, subtitle,handleUpdate, myBook = false }) => {
+const BookTile = ({ userId, id, title, description, img, blocked, subtitle, handleUpdate, myBook = false }) => {
     // TODO: Fazer o autor de vdd
     const [user, setUser] = useState(null);
     const [showBookInfoModal, setShowBookInfoModal] = useState(false);
@@ -24,8 +24,8 @@ const BookTile = ({ userId, id, title, description, img, blocked, subtitle,handl
 
             // Error
             if (response.message) throw new Error(response.message);
-            handleUpdate()
             setShowBookInfoModal(false);
+            handleUpdate()
         } catch (err) {
             console.error(err);
         }
@@ -76,7 +76,7 @@ const BookTile = ({ userId, id, title, description, img, blocked, subtitle,handl
                     </div>
                 )}
             </div>
-            { showBookInfoModal && (
+            {showBookInfoModal && (
                 <BookInfoModal myBook={myBook} blocked={blocked} show={showBookInfoModal} handleClose={() => setShowBookInfoModal(false)} handleBuy={handleBuyBook} handleCancel={handleCancelBook} handleConclude={handleConcludeBook}>
                     <h2>Infomacões do livro</h2>
                     <p>Titulo: {title}</p>

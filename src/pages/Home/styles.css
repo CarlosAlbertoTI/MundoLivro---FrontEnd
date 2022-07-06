@@ -33,14 +33,14 @@
 .btnCategoria:hover{
     margin:8px;
     color:#ded6d6;
-
+    background-color: #712B75;
 }
 
 .Livros {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .searchBar {
